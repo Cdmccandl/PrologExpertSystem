@@ -25,10 +25,10 @@ nl.
 darkLager :- checkBeer(amberColor),checkBeer(mediumHops),checkBeer(mediumAlcohol),
 nl.
 %3
-paleAle :- checkbeer(amberColor),checkBeer(highHops),checkBeer(highAlcohol),
+paleAle :- checkBeer(amberColor),checkBeer(highHops),checkBeer(highAlcohol),
 nl.
 %4
-porter :- checkbeer(darkColor),checkBeer(lightHops),checkbeer(highSweet),
+porter :- checkBeer(darkColor),checkBeer(lightHops),checkBeer(highSweet),
 nl.
 %5
 stout :- checkBeer(darkColor),checkBeer(mediumHops),checkBeer(mediumBitter),
@@ -68,3 +68,5 @@ write("I hope I can get it next time... "), fail.
 retractItems :- retract(yes(_)),fail.
 retractItems :- retract(no(_)),fail.
 retractItems.
+
+end :- write("Type 'begin.' and press enter to have another go!").
