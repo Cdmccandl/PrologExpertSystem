@@ -10,11 +10,12 @@ checkifRight,nl,
 retractItems,
 end.
 
-checkFor(Anypilsner) :- pilsner, !.
-checkFor(AnydarkLager) :- darkLager, !.
-checkFor(AnypaleAle) :- paleAle, !.
-checkFor(anyPorter) :- porter, !.
-checkFor(anyStout) :- stout, !.
+checkFor(pilsner) :- pilsner, !.
+checkFor(darkLager) :- darkLager, !.
+checkFor(paleAle) :- paleAle, !.
+checkFor(porter) :- porter, !.
+checkFor(stout) :- stout, !.
+checkFor(nothing) :- unknown.
 
 /*List of beer items need to add more!*/
 %1
@@ -57,3 +58,13 @@ are you ready?"),
 read(yes) ->
 write("") ;
 write("GoodBye"), fail.
+
+checkifRight :-
+write("Did I guess correctly?"),
+read(yes) ->
+write("Told you I would!") ;
+write("I hope I can get it next time... "), fail.
+
+retractItems :- retract(yes(_)),fail.
+retractItems :- retract(no(_)),fail.
+retractItems.
