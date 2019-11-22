@@ -10,6 +10,12 @@ checkifRight,nl,
 retractItems,
 end.
 
+checkFor(Anypilsner) :- pilsner, !.
+checkFor(AnydarkLager) :- darkLager, !.
+checkFor(AnypaleAle) :- paleAle, !.
+checkFor(anyPorter) :- porter, !.
+checkFor(anyStout) :- stout, !.
+
 /*List of beer items need to add more!*/
 %1
 pilsner :- checkBeer(lightColor),checkBeer(lightHops), checkBeer(lowAlcohol),
@@ -38,3 +44,16 @@ read(Reply), nl,
 ((Reply == yes ; Reply == y) ->
 assert(yes(Question)) ;
 assert(no(Question)), fail).
+
+checkBeer(S) :-
+(yes(S) -> true ;
+(no(S) -> fail ;
+askQuestion(S))).
+
+introduction :-
+write("I will now ask you questions to find out your favorite beer!
+please answer 'yes' or 'no'
+are you ready?"),
+read(yes) ->
+write("") ;
+write("GoodBye"), fail.
