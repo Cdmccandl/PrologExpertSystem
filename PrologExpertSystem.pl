@@ -10,7 +10,7 @@ checkifRight,nl,
 retractItems,
 end.
 
-/*List of beer items*/
+/*List of beer items need to add more!*/
 %1
 pilsner :- checkBeer(lightColor),checkBeer(lightHops), checkBeer(lowAlcohol),
 nl.
@@ -26,3 +26,15 @@ nl.
 %5
 stout :- checkBeer(darkColor),checkBeer(mediumHops),checkBeer(mediumBitter),
 nl.
+
+unknown :-
+write("").
+
+askQuestion(Question) :-
+write("would you like your beer to have: "),
+write(Question),
+write("?"),
+read(Reply), nl,
+((Reply == yes ; Reply == y) ->
+assert(yes(Question)) ;
+assert(no(Question)), fail).
