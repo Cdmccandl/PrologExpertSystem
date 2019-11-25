@@ -16,30 +16,30 @@ checkFor(stout)     :- stout, !.
 
 /* list of beer items TODO: need to add more! */
 %1
-pilsner :- checkBeer(lightColor),
-           checkBeer(lightHops),
-           checkBeer(lowAlcohol),
-nl.
+pilsner :-   checkBeer(lightColor),
+             checkBeer(lightHops),
+             checkBeer(lowAlcohol),
+             nl.
 %2
 darkLager :- checkBeer(amberColor),
              checkBeer(mediumHops),
              checkBeer(mediumAlcohol),
-nl.
+             nl.
 %3
-paleAle :- checkBeer(amberColor),
-           checkBeer(highHops),
-           checkBeer(highAlcohol),
-nl.
+paleAle :-   checkBeer(amberColor),
+             checkBeer(highHops),
+             checkBeer(highAlcohol),
+             nl.
 %4
-porter :- checkBeer(darkColor),
-          checkBeer(lightHops),
-          checkBeer(highSweet),
-nl.
+porter :-    checkBeer(darkColor),
+             checkBeer(lightHops),
+             checkBeer(highSweet),
+             nl.
 %5
-stout :- checkBeer(darkColor),
-         checkBeer(mediumHops),
-         checkBeer(mediumBitter),
-nl.
+stout :-     checkBeer(darkColor),
+             checkBeer(mediumHops),
+             checkBeer(mediumBitter),
+             nl.
 
 
 guessBeer :-
