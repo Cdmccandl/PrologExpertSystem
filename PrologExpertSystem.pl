@@ -48,7 +48,7 @@ nl.
 unknown :-
 write("").
 
-/*Asking questions for each trait*/
+/* ask questions for each trait */
 askQuestion(Question) :-
 write("Would you like your beer to have: "),
 write(Question),
