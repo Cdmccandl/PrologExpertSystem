@@ -1,7 +1,7 @@
 /* Conor McCandless, Casey Jones Expert System in Prolog */
 
 begin :- write("Welcome to the Beer Selector, an Expert System made to pick the beer you need!"),
-introduction,nl,
+introduction, nl,
 guessBeer,
 retractItems,
 end.
@@ -137,10 +137,10 @@ guessBeer :-
     (
         checkFor(Beer),
         write("you should order the: "),
-        write(Beer),nl,
+        write(Beer), nl,
         checkifRight
     ) ; (
-        write("Sorry, I could not find the drink you want"),nl,
+        write("Sorry, I could not find the drink you want"), nl,
         write("My creator should have been a more experienced beer drinker!"), nl
     ).
 
@@ -155,7 +155,7 @@ assert(yes(Question)) ;
 assert(no(Question)), fail).
 
 /* check for each trait */
-:- dynamic yes/1,no/1.
+:- dynamic yes/1, no/1.
 
 checkBeer(S) :-
 (
@@ -183,8 +183,8 @@ write("Told you I would!") ;
 write("I hope I can get it next time... "), fail.
 
 /* retractItems chosen for more program runs */
-retractItems :- retract(yes(_)),fail.
-retractItems :- retract(no(_)),fail.
+retractItems :- retract(yes(_)), fail.
+retractItems :- retract(no(_)), fail.
 retractItems.
 
 end :- write("Type 'begin.' and press enter to have another go!").
