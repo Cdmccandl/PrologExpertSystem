@@ -11,7 +11,6 @@ checkFor(pilsner)     :- pilsner, !.
 checkFor(amberLager)  :- amberLager, !.
 checkFor(paleAle)     :- paleAle, !.
 checkFor(porter)      :- porter, !.
-checkFor(stout)       :- stout, !.
 checkFor(irishStout)  :- irishStout, !.
 checkFor(milkStout)   :- milkStout, !.
 checkFor(bock)        :- bock, !.
