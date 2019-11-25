@@ -159,12 +159,12 @@ assert(no(Question)), fail).
 
 checkBeer(S) :-
 (
-     yes(T) -> true;
-     (
-         no(T) -> fail;
-         askQuestion(S)
-     )
- ).
+    yes(T) -> true;
+    (
+        no(T) -> fail;
+        askQuestion(S)
+    )
+).
 
 /* introduction for user */
 introduction :-
