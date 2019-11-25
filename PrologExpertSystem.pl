@@ -67,9 +67,13 @@ assert(no(Question)), fail).
 :- dynamic yes/1,no/1.
 
 checkBeer(S) :-
-(yes(S) -> true ;
-(no(S) -> fail ;
-askQuestion(S))).
+(
+     yes(T) -> true;
+     (
+         no(T) -> fail;
+         askQuestion(S)
+     )
+ ).
 
 /* introduction for user */
 introduction :-
