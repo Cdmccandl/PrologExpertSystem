@@ -11,28 +11,38 @@ retractItems,
 end.
 
 /*Start guessing each beer type*/
-checkFor(pilsner) :- pilsner, !.
+checkFor(pilsner)   :- pilsner, !.
 checkFor(darkLager) :- darkLager, !.
-checkFor(paleAle) :- paleAle, !.
-checkFor(porter) :- porter, !.
-checkFor(stout) :- stout, !.
-checkFor(nothing) :- unknown.
+checkFor(paleAle)   :- paleAle, !.
+checkFor(porter)    :- porter, !.
+checkFor(stout)     :- stout, !.
+checkFor(nothing)   :- unknown.
 
 /*List of beer items need to add more!*/
 %1
-pilsner :- checkBeer(lightColor),checkBeer(lightHops), checkBeer(lowAlcohol),
+pilsner :- checkBeer(lightColor),
+           checkBeer(lightHops),
+           checkBeer(lowAlcohol),
 nl.
 %2
-darkLager :- checkBeer(amberColor),checkBeer(mediumHops),checkBeer(mediumAlcohol),
+darkLager :- checkBeer(amberColor),
+             checkBeer(mediumHops),
+             checkBeer(mediumAlcohol),
 nl.
 %3
-paleAle :- checkBeer(amberColor),checkBeer(highHops),checkBeer(highAlcohol),
+paleAle :- checkBeer(amberColor),
+           checkBeer(highHops),
+           checkBeer(highAlcohol),
 nl.
 %4
-porter :- checkBeer(darkColor),checkBeer(lightHops),checkBeer(highSweet),
+porter :- checkBeer(darkColor),
+          checkBeer(lightHops),
+          checkBeer(highSweet),
 nl.
 %5
-stout :- checkBeer(darkColor),checkBeer(mediumHops),checkBeer(mediumBitter),
+stout :- checkBeer(darkColor),
+         checkBeer(mediumHops),
+         checkBeer(mediumBitter),
 nl.
 
 unknown :-
@@ -40,9 +50,9 @@ write("").
 
 /*Asking questions for each trait*/
 askQuestion(Question) :-
-write("would you like your beer to have: "),
+write("Would you like your beer to have: "),
 write(Question),
-write("?"),
+write("? "),
 read(Reply), nl,
 ((Reply == yes ; Reply == y) ->
 assert(yes(Question)) ;
@@ -59,11 +69,11 @@ askQuestion(S))).
 /*Introduction to user*/
 introduction :-
 write("I will now ask you questions to find out your favorite beer!
-please answer 'yes' or 'no'
-are you ready?"),
+Please answer 'yes' or 'no'.
+Are you ready? "),
 read(yes) ->
 write("") ;
-write("GoodBye"), fail.
+write("Goodbye."), fail.
 
 /*verify if answer is correct*/
 checkifRight :-
