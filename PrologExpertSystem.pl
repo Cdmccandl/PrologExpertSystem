@@ -58,7 +58,7 @@ read(Reply), nl,
 assert(yes(Question)) ;
 assert(no(Question)), fail).
 
-/* checking for each trait*/
+/* check for each trait */
 :- dynamic yes/1,no/1.
 
 checkBeer(S) :-
