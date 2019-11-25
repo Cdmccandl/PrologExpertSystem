@@ -24,7 +24,7 @@ checkFor(dubbel)      :- dubbel, !.
 checkFor(belgianGold) :- belgianGold, !.
 
 
-/* list of beer items TODO: need to add more! */
+/* list of beer items */
 
 % 1
 pilsner :-     checkBeer(lightColor),
