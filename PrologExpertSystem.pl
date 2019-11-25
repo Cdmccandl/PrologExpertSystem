@@ -66,7 +66,7 @@ checkBeer(S) :-
 (no(S) -> fail ;
 askQuestion(S))).
 
-/*Introduction to user*/
+/* introduction for user */
 introduction :-
 write("I will now ask you questions to find out your favorite beer!
 Please answer 'yes' or 'no'.
@@ -75,14 +75,14 @@ read(yes) ->
 write("") ;
 write("Goodbye."), fail.
 
-/*verify if answer is correct*/
+/* verify if answer is correct */
 checkifRight :-
 write("Did I guess correctly?"),
 read(yes) ->
 write("Told you I would!") ;
 write("I hope I can get it next time... "), fail.
 
-/*retract Items chosen for more program runs*/
+/* retractItems chosen for more program runs */
 retractItems :- retract(yes(_)),fail.
 retractItems :- retract(no(_)),fail.
 retractItems.
