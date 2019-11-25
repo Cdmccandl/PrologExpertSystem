@@ -6,7 +6,7 @@ guessBeer,
 retractItems,
 end.
 
-/*Start guessing each beer type*/
+/* start guessing each beer type */
 checkFor(pilsner)   :- pilsner, !.
 checkFor(darkLager) :- darkLager, !.
 checkFor(paleAle)   :- paleAle, !.
@@ -14,7 +14,7 @@ checkFor(porter)    :- porter, !.
 checkFor(stout)     :- stout, !.
 
 
-/*List of beer items need to add more!*/
+/* list of beer items TODO: need to add more! */
 %1
 pilsner :- checkBeer(lightColor),
            checkBeer(lightHops),
@@ -53,7 +53,7 @@ guessBeer :-
         write("My creator should have been a more experienced beer drinker!"), nl
     ).
 
-/*Asking questions for each trait*/
+/* ask questions for each trait */
 askQuestion(Question) :-
 write("Would you like your beer to have: "),
 write(Question),
@@ -63,7 +63,7 @@ read(Reply), nl,
 assert(yes(Question)) ;
 assert(no(Question)), fail).
 
-/* checking for each trait*/
+/* check for each trait */
 :- dynamic yes/1,no/1.
 
 checkBeer(S) :-
