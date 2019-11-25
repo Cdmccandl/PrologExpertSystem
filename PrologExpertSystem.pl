@@ -15,31 +15,112 @@ checkFor(stout)     :- stout, !.
 
 
 /* list of beer items TODO: need to add more! */
-%1
-pilsner :-   checkBeer(lightColor),
-             checkBeer(lightHops),
-             checkBeer(lowAlcohol),
-             nl.
-%2
-darkLager :- checkBeer(amberColor),
-             checkBeer(mediumHops),
-             checkBeer(mediumAlcohol),
-             nl.
-%3
-paleAle :-   checkBeer(amberColor),
-             checkBeer(highHops),
-             checkBeer(highAlcohol),
-             nl.
-%4
-porter :-    checkBeer(darkColor),
-             checkBeer(lightHops),
-             checkBeer(highSweet),
-             nl.
-%5
-stout :-     checkBeer(darkColor),
-             checkBeer(mediumHops),
-             checkBeer(mediumBitter),
-             nl.
+
+% 1
+pilsner :-     checkBeer(lightColor),
+               checkBeer(lowHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(lowAlcohol),
+               nl.
+% 2
+amberLager :-  checkBeer(amberColor),
+               checkBeer(mediumHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 3
+paleAle :-     checkBeer(amberColor),
+               checkBeer(highHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
+% 4
+porter :-      checkBeer(darkColor),
+               checkBeer(highHops),
+               checkBeer(highMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 5
+irishStout :-  checkBeer(darkColor),
+               checkBeer(mediumHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 6
+milkStout :-   checkBeer(darkColor),
+               checkBeer(lowHops),
+               checkBeer(highMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 7
+bock :-        checkBeer(darkColor),
+               checkBeer(lowHops),
+               checkBeer(highMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
+% 8
+wheatBeer :-   checkBeer(amberColor),
+               checkBeer(lowHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(lowAlcohol),
+               nl.
+% 9
+brownAle :-    checkBeer(darkColor),
+               checkBeer(lowHops),
+               checkBeer(highMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 10
+sourBeer :-    checkBeer(lightColor),
+               checkBeer(mediumHops),
+               checkBeer(mediumMalt),
+               checkBeer(sour),
+               checkBeer(highAlcohol),
+               nl.
+% 11
+ipa :-         checkBeer(lightColor),
+               checkBeer(highHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
+% 12
+scottishAle :- checkBeer(amberColor),
+               checkBeer(lowHops),
+               checkBeer(highMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
+% 13
+redAle :-      checkBeer(amberColor),
+               checkBeer(mediumHops),
+               checkBeer(mediumMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
+% 14
+dubbel :-      checkBeer(darkColor),
+               checkBeer(mediumHops),
+               checkBeer(lowMalt),
+               checkBeer(notSour),
+               checkBeer(mediumAlcohol),
+               nl.
+% 15
+belgianGold :- checkBeer(lightColor),
+               checkBeer(highHops),
+               checkBeer(lowMalt),
+               checkBeer(notSour),
+               checkBeer(highAlcohol),
+               nl.
 
 
 guessBeer :-
