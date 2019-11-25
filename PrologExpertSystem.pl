@@ -1,12 +1,8 @@
 /* Conor McCandless, Casey Jones Expert System in Prolog */
 
 begin :- write("Welcome to the Beer Selector, an Expert System made to pick the beer you need!"),
-retractItems,
 introduction,nl,
-checkFor(Beer),
-write("you should order the: "),
-write(Beer),nl,
-checkifRight,nl,
+guessBeer,
 retractItems,
 end.
 
@@ -16,7 +12,7 @@ checkFor(darkLager) :- darkLager, !.
 checkFor(paleAle)   :- paleAle, !.
 checkFor(porter)    :- porter, !.
 checkFor(stout)     :- stout, !.
-checkFor(nothing)   :- unknown.
+
 
 /*List of beer items need to add more!*/
 %1
@@ -45,8 +41,17 @@ stout :- checkBeer(darkColor),
          checkBeer(mediumBitter),
 nl.
 
-unknown :-
-write("").
+
+guessBeer :-
+    (
+        checkFor(Beer),
+        write("you should order the: "),
+        write(Beer),nl,
+        checkifRight
+    ) ; (
+        write("Sorry, I could not find the drink you want"),nl,
+        write("My creator should have been a more experienced beer drinker!"), nl
+    ).
 
 /*Asking questions for each trait*/
 askQuestion(Question) :-
