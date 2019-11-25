@@ -7,11 +7,22 @@ retractItems,
 end.
 
 /* start guessing each beer type */
-checkFor(pilsner)   :- pilsner, !.
-checkFor(darkLager) :- darkLager, !.
-checkFor(paleAle)   :- paleAle, !.
-checkFor(porter)    :- porter, !.
-checkFor(stout)     :- stout, !.
+checkFor(pilsner)     :- pilsner, !.
+checkFor(amberLager)  :- amberLager, !.
+checkFor(paleAle)     :- paleAle, !.
+checkFor(porter)      :- porter, !.
+checkFor(stout)       :- stout, !.
+checkFor(irishStout)  :- irishStout, !.
+checkFor(milkStout)   :- milkStout, !.
+checkFor(bock)        :- bock, !.
+checkFor(wheatBeer)   :- wheatBeer, !.
+checkFor(brownAle)    :- brownAle, !.
+checkFor(sourBeer)    :- sourBeer, !.
+checkFor(ipa)         :- ipa, !.
+checkFor(scottishAle) :- scottishAle, !.
+checkFor(redAle)      :- redAle, !.
+checkFor(dubbel)      :- dubbel, !.
+checkFor(belgianGold) :- belgianGold, !.
 
 
 /* list of beer items TODO: need to add more! */
