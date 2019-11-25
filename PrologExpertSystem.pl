@@ -10,7 +10,7 @@ checkifRight,nl,
 retractItems,
 end.
 
-/*Start guessing each beer type*/
+/* start guessing each beer type */
 checkFor(pilsner)   :- pilsner, !.
 checkFor(darkLager) :- darkLager, !.
 checkFor(paleAle)   :- paleAle, !.
@@ -18,7 +18,7 @@ checkFor(porter)    :- porter, !.
 checkFor(stout)     :- stout, !.
 checkFor(nothing)   :- unknown.
 
-/*List of beer items need to add more!*/
+/* list of beer items TODO: need to add more! */
 %1
 pilsner :- checkBeer(lightColor),
            checkBeer(lightHops),
