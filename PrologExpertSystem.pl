@@ -1,6 +1,7 @@
 /* Conor McCandless, Casey Jones Expert System in Prolog */
 
 begin :- write("Welcome to the Beer Selector, an Expert System made to pick the beer you need!"),
+retractItems,
 introduction, nl,
 guessBeer,
 retractItems,
@@ -27,109 +28,109 @@ checkFor(belgianGold) :- belgianGold, !.
 /* list of beer items */
 
 % 1
-pilsner :-     checkBeer(lightColor),
-               checkBeer(lowHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(lowAlcohol),
+pilsner :-     beer_color(lightColor),
+               beer_hops(lowHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(lowAlcohol),
                nl.
 % 2
-amberLager :-  checkBeer(amberColor),
-               checkBeer(mediumHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+amberLager :-  beer_color(amberColor),
+               beer_hops(mediumHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 3
-paleAle :-     checkBeer(amberColor),
-               checkBeer(highHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+paleAle :-     beer_color(amberColor),
+               beer_hops(highHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 % 4
-porter :-      checkBeer(darkColor),
-               checkBeer(highHops),
-               checkBeer(highMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+porter :-      beer_color(darkColor),
+               beer_hops(highHops),
+               beer_malt(highMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 5
-irishStout :-  checkBeer(darkColor),
-               checkBeer(mediumHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+irishStout :-  beer_color(darkColor),
+               beer_hops(mediumHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 6
-milkStout :-   checkBeer(darkColor),
-               checkBeer(lowHops),
-               checkBeer(highMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+milkStout :-   beer_color(darkColor),
+               beer_hops(lowHops),
+               beer_malt(highMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 7
-bock :-        checkBeer(darkColor),
-               checkBeer(lowHops),
-               checkBeer(highMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+bock :-        beer_color(darkColor),
+               beer_hops(lowHops),
+               beer_malt(highMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 % 8
-wheatBeer :-   checkBeer(amberColor),
-               checkBeer(lowHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(lowAlcohol),
+wheatBeer :-   beer_color(amberColor),
+               beer_hops(lowHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(lowAlcohol),
                nl.
 % 9
-brownAle :-    checkBeer(darkColor),
-               checkBeer(lowHops),
-               checkBeer(highMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+brownAle :-    beer_color(darkColor),
+               beer_hops(lowHops),
+               beer_malt(highMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 10
-sourBeer :-    checkBeer(lightColor),
-               checkBeer(mediumHops),
-               checkBeer(mediumMalt),
-               checkBeer(sour),
-               checkBeer(highAlcohol),
+sourBeer :-    beer_color(lightColor),
+               beer_hops(mediumHops),
+               beer_malt(mediumMalt),
+               beer_sour(sour),
+               beer_alcohol(highAlcohol),
                nl.
 % 11
-ipa :-         checkBeer(lightColor),
-               checkBeer(highHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+ipa :-         beer_color(lightColor),
+               beer_hops(highHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 % 12
-scottishAle :- checkBeer(amberColor),
-               checkBeer(lowHops),
-               checkBeer(highMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+scottishAle :- beer_color(amberColor),
+               beer_hops(lowHops),
+               beer_malt(highMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 % 13
-redAle :-      checkBeer(amberColor),
-               checkBeer(mediumHops),
-               checkBeer(mediumMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+redAle :-      beer_color(amberColor),
+               beer_hops(mediumHops),
+               beer_malt(mediumMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 % 14
-dubbel :-      checkBeer(darkColor),
-               checkBeer(mediumHops),
-               checkBeer(lowMalt),
-               checkBeer(notSour),
-               checkBeer(mediumAlcohol),
+dubbel :-      beer_color(darkColor),
+               beer_hops(mediumHops),
+               beer_malt(lowMalt),
+               beer_sour(notSour),
+               beer_alcohol(mediumAlcohol),
                nl.
 % 15
-belgianGold :- checkBeer(lightColor),
-               checkBeer(highHops),
-               checkBeer(lowMalt),
-               checkBeer(notSour),
-               checkBeer(highAlcohol),
+belgianGold :- beer_color(lightColor),
+               beer_hops(highHops),
+               beer_malt(lowMalt),
+               beer_sour(notSour),
+               beer_alcohol(highAlcohol),
                nl.
 
 
@@ -155,7 +156,22 @@ assert(yes(Question)) ;
 assert(no(Question)), fail).
 
 /* check for each trait */
-:- dynamic yes/1, no/1.
+:- dynamic color/0.
+:- dynamic color/1.
+:- dynamic color/2.
+:- dynamic hops/0.
+:- dynamic hops/1.
+:- dynamic hops/2.
+:- dynamic malt/0.
+:- dynamic malt/1.
+:- dynamic malt/2.
+:- dynamic sour/0.
+:- dynamic sour/1.
+:- dynamic sour/2.
+:- dynamic alcohol/0.
+:- dynamic alcohol/1.
+:- dynamic alcohol/2.
+:- dynamic yes/1,no/1.
 
 checkBeer(S) :-
 (
@@ -163,6 +179,81 @@ checkBeer(S) :-
     (
         no(S) -> fail;
         askQuestion(S)
+    )
+).
+
+beer_color(Type) :-
+  ( color(Type) ->
+    true;
+    ( color ->
+      false;
+      format("Would you like your beer to have: ~w?~n", [Type]),
+      Answer = read(yes),
+      (
+        Answer ->
+          assert(color(Type)),
+          assert(color)
+      )
+    )
+).
+
+beer_hops(Type) :-
+  ( hops(Type) ->
+    true;
+    ( hops ->
+      false;
+      format("Would you like your beer to have: ~w?~n", [Type]),
+      Answer = read(yes),
+      (
+        Answer ->
+          assert(hops(Type)),
+          assert(hops)
+      )
+    )
+).
+
+beer_malt(Type) :-
+  ( malt(Type) ->
+    true;
+    ( malt ->
+      false;
+      format("Would you like your beer to have: ~w?~n", [Type]),
+      Answer = read(yes),
+      (
+        Answer ->
+          assert(malt(Type)),
+          assert(malt)
+      )
+    )
+).
+
+beer_sour(Type) :-
+  ( sour(Type) ->
+    true;
+    ( sour ->
+      false;
+      format("Would you like your beer to have: ~w?~n", [Type]),
+      Answer = read(yes),
+      (
+        Answer ->
+          assert(sour(Type)),
+          assert(sour)
+      )
+    )
+).
+
+beer_alcohol(Type) :-
+  ( alcohol(Type) ->
+    true;
+    ( alcohol ->
+      false;
+      format("Would you like your beer to have: ~w?~n", [Type]),
+      Answer = read(yes),
+      (
+        Answer ->
+          assert(alcohol(Type)),
+          assert(alcohol)
+      )
     )
 ).
 
@@ -183,8 +274,12 @@ write("Told you I would!") ;
 write("I hope I can get it next time... "), fail.
 
 /* retractItems chosen for more program runs */
-retractItems :- retract(yes(_)), fail.
-retractItems :- retract(no(_)), fail.
+
+retractItems :- retractall(color(_)).
+retractItems :- retractall(hops(_)).
+retractItems :- retractall(malt(_)).
+retractItems :- retractall(sour(_)).
+retractItems :- retractall(alcohol(_)).
 retractItems.
 
 end :- write("Type 'begin.' and press enter to have another go!").
