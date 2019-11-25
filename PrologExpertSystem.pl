@@ -10,6 +10,7 @@ checkifRight,nl,
 retractItems,
 end.
 
+/*Start guessing each beer type*/
 checkFor(pilsner) :- pilsner, !.
 checkFor(darkLager) :- darkLager, !.
 checkFor(paleAle) :- paleAle, !.
@@ -37,6 +38,7 @@ nl.
 unknown :-
 write("").
 
+/*Asking questions for each trait*/
 askQuestion(Question) :-
 write("would you like your beer to have: "),
 write(Question),
@@ -46,11 +48,15 @@ read(Reply), nl,
 assert(yes(Question)) ;
 assert(no(Question)), fail).
 
+/* checking for each trait*/
+:- dynamic yes/1,no/1.
+
 checkBeer(S) :-
 (yes(S) -> true ;
 (no(S) -> fail ;
 askQuestion(S))).
 
+/*Introduction to user*/
 introduction :-
 write("I will now ask you questions to find out your favorite beer!
 please answer 'yes' or 'no'
@@ -59,12 +65,14 @@ read(yes) ->
 write("") ;
 write("GoodBye"), fail.
 
+/*verify if answer is correct*/
 checkifRight :-
 write("Did I guess correctly?"),
 read(yes) ->
 write("Told you I would!") ;
 write("I hope I can get it next time... "), fail.
 
+/*retract Items chosen for more program runs*/
 retractItems :- retract(yes(_)),fail.
 retractItems :- retract(no(_)),fail.
 retractItems.
