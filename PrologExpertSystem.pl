@@ -181,6 +181,5 @@ begin :- write("Welcome to the Beer Selector..."), nl,
          retractall(yes(_)),
          retractall(no(_)),
          ready -> guessBeer,
-                  write("Type 'begin.' and press enter to have another go!").
-                  end;
+                  write("Type 'begin.' and press enter to have another go!"),
                   fail.
