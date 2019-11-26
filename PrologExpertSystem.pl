@@ -1,11 +1,12 @@
 /* Conor McCandless, Casey Jones Expert System in Prolog */
 
-begin :- write("Welcome to the Beer Selector, an Expert System made to pick the beer you need!"),
-retractItems,
-introduction, nl,
-guessBeer,
-retractItems,
-end.
+begin :- write("Welcome to the Beer Selector..."), nl,
+         write("an Expert System to pick the beer you need!"), nl,
+         retractItems,
+         introduction, nl,
+         guessBeer,
+         retractItems,
+         end.
 
 /* start guessing each beer type */
 checkFor(pilsner)     :- pilsner, !.
@@ -189,8 +190,7 @@ beer_color(Type) :-
       false;
       format("Would you like your beer to have: ~w?~n", [Type]),
       Answer = read(yes),
-      (
-        Answer ->
+      ( Answer ->
           assert(color(Type)),
           assert(color)
       )
@@ -204,8 +204,7 @@ beer_hops(Type) :-
       false;
       format("Would you like your beer to have: ~w?~n", [Type]),
       Answer = read(yes),
-      (
-        Answer ->
+      ( Answer ->
           assert(hops(Type)),
           assert(hops)
       )
@@ -219,8 +218,7 @@ beer_malt(Type) :-
       false;
       format("Would you like your beer to have: ~w?~n", [Type]),
       Answer = read(yes),
-      (
-        Answer ->
+      ( Answer ->
           assert(malt(Type)),
           assert(malt)
       )
@@ -234,8 +232,7 @@ beer_sour(Type) :-
       false;
       format("Would you like your beer to have: ~w?~n", [Type]),
       Answer = read(yes),
-      (
-        Answer ->
+      ( Answer ->
           assert(sour(Type)),
           assert(sour)
       )
@@ -249,8 +246,7 @@ beer_alcohol(Type) :-
       false;
       format("Would you like your beer to have: ~w?~n", [Type]),
       Answer = read(yes),
-      (
-        Answer ->
+      ( Answer ->
           assert(alcohol(Type)),
           assert(alcohol)
       )
@@ -259,19 +255,19 @@ beer_alcohol(Type) :-
 
 /* introduction for user */
 introduction :-
-write("I will now ask you questions to find out your favorite beer!
-Please answer 'yes' or 'no'.
-Are you ready? "),
-read(yes) ->
-write("") ;
-write("Goodbye."), fail.
+write("I will now ask you questions to find out your favorite beer."), nl,
+write("Please answer 'yes.' or 'no.'"), nl,
+write("Are you ready? "),
+read(yes) -> write("") ;
+             write("Goodbye."),
+             fail.
 
 /* verify if answer is correct */
 checkifRight :-
 write("Did I guess correctly?"),
-read(yes) ->
-write("Told you I would!") ;
-write("I hope I can get it next time... "), fail.
+read(yes) -> write("Told you I would!") ;
+             write("I hope I can get it next time... "),
+             fail.
 
 /* retractItems chosen for more program runs */
 
