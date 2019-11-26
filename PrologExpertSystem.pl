@@ -1,5 +1,22 @@
 /* Conor McCandless, Casey Jones Expert System in Prolog */
 
+:- dynamic color/0.
+:- dynamic color/1.
+:- dynamic color/2.
+:- dynamic hops/0.
+:- dynamic hops/1.
+:- dynamic hops/2.
+:- dynamic malt/0.
+:- dynamic malt/1.
+:- dynamic malt/2.
+:- dynamic sour/0.
+:- dynamic sour/1.
+:- dynamic sour/2.
+:- dynamic alcohol/0.
+:- dynamic alcohol/1.
+:- dynamic alcohol/2.
+:- dynamic yes/1,no/1.
+
 begin :- write("Welcome to the Beer Selector..."), nl,
          write("an Expert System to pick the beer you need!"), nl,
          retractItems,
@@ -155,24 +172,6 @@ read(Reply), nl,
 ((Reply == yes ; Reply == y) ->
 assert(yes(Question)) ;
 assert(no(Question)), fail).
-
-/* check for each trait */
-:- dynamic color/0.
-:- dynamic color/1.
-:- dynamic color/2.
-:- dynamic hops/0.
-:- dynamic hops/1.
-:- dynamic hops/2.
-:- dynamic malt/0.
-:- dynamic malt/1.
-:- dynamic malt/2.
-:- dynamic sour/0.
-:- dynamic sour/1.
-:- dynamic sour/2.
-:- dynamic alcohol/0.
-:- dynamic alcohol/1.
-:- dynamic alcohol/2.
-:- dynamic yes/1,no/1.
 
 checkBeer(S) :-
 (
