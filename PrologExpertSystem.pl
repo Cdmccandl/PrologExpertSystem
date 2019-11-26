@@ -17,6 +17,7 @@
 :- dynamic alcohol/2.
 :- dynamic yes/1,no/1.
 
+
 begin :- write("Welcome to the Beer Selector..."), nl,
          write("an Expert System to pick the beer you need!"), nl,
          retractItems,
@@ -24,6 +25,7 @@ begin :- write("Welcome to the Beer Selector..."), nl,
          guessBeer,
          retractItems,
          end.
+
 
 /* start guessing each beer type */
 checkFor(pilsner)     :- pilsner, !.
@@ -163,6 +165,7 @@ guessBeer :-
         write("My creator should have been a more experienced beer drinker!"), nl
     ).
 
+
 /* ask questions for each trait */
 askQuestion(Question) :-
 write("Would you like your beer to have: "),
@@ -173,6 +176,7 @@ read(Reply), nl,
 assert(yes(Question)) ;
 assert(no(Question)), fail).
 
+
 checkBeer(S) :-
 (
     yes(S) -> true;
@@ -181,6 +185,7 @@ checkBeer(S) :-
         askQuestion(S)
     )
 ).
+
 
 beer_color(Type) :-
   ( color(Type) ->
@@ -252,6 +257,7 @@ beer_alcohol(Type) :-
     )
 ).
 
+
 /* introduction for user */
 introduction :-
 write("I will now ask you questions to find out your favorite beer."), nl,
@@ -261,6 +267,7 @@ read(yes) -> write("") ;
              write("Goodbye."),
              fail.
 
+
 /* verify if answer is correct */
 checkifRight :-
 write("Did I guess correctly?"),
@@ -268,13 +275,14 @@ read(yes) -> write("Told you I would!") ;
              write("I hope I can get it next time... "),
              fail.
 
-/* retractItems chosen for more program runs */
 
+/* retractItems chosen for more program runs */
 retractItems :- retractall(color(_)).
 retractItems :- retractall(hops(_)).
 retractItems :- retractall(malt(_)).
 retractItems :- retractall(sour(_)).
 retractItems :- retractall(alcohol(_)).
 retractItems.
+
 
 end :- write("Type 'begin.' and press enter to have another go!").
