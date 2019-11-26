@@ -1,33 +1,8 @@
-/* Conor McCandless, Casey Jones Expert System in Prolog */
-
-
-begin :- write("Welcome to the Beer Selector..."), nl,
-         write("an Expert System to pick the beer you need!"), nl,
-         retractall(yes(_)),
-         retractall(no(_)),
-         ready -> guessBeer,
-                  end;
-                  fail.
+/* Expert System in Prolog */
+/*  Conor McCandless, Casey Jones */
 
 
 :- dynamic yes/1, no/1.
-
-
-/* gather facts from user input */
-is(Attribute) :-
-  ((yes(Attribute) ->
-    true, !;
-    no(Attribute) ->
-    false, !;
-    format("Would you like your beer to be ~w?~n", [Attribute]),
-    read(Answer),
-    (Answer = yes ->
-      assert(yes(Attribute)), true, !;
-    Answer = no ->
-      assert(no(Attribute)), false, !;
-    write("Please answer 'yes.' or 'no.'"), nl,
-    is(Attribute)))
-  ).
 
 
 /* list of beer items */
@@ -124,18 +99,52 @@ beer(belgianGold) :- is("light-colored"),
                      nl.
 
 
-guessBeer :-
-  write("I will now ask you questions to find out your favorite beer."), nl,
-  ( beer(X),
-    write("You should order the "),
-    write(X), nl,
-    checkifRight
-  ) ;
-  ( write("Sorry, I could not find a beer matching those criteria."), nl,
-    write("My creator should have been a more experienced beer drinker!"), nl
+/* deassert options in category other than affirmed attribute */
+eliminateOthers(_, []).
+eliminateOthers(Attribute, [H|T]) :- (dif(H, Attribute) -> assert(no(H)); true),
+                                     eliminateOthers(Attribute, T).
+
+
+/* test if attribute is in this category, call eliminateOthers if so */
+eliminateIfMember(Attribute, List) :- member(Attribute, List) ->
+                                        eliminateOthers(Attribute, List),
+                                        true, !;
+                                        false, !.
+
+
+/* call eliminateIfMember on each category till affirmed attribute matches */
+elimination(Attribute) :-
+  eliminateIfMember(Attribute,
+    ["light-colored", "amber-colored", "dark-colored"]), true;
+  eliminateIfMember(Attribute,
+    ["mildly hoppy", "moderately hoppy", "very hoppy"]), true;
+  eliminateIfMember(Attribute,
+    ["not too sweet", "somewhat malty", "quite malty"]), true;
+  eliminateIfMember(Attribute,
+    ["low in alcohol", "moderate in alcohol", "high in alcohol"]), true.
+
+
+/* assert & deassert attributes based on user input */
+is(Attribute) :-
+  ((yes(Attribute) ->
+    true, !;
+    no(Attribute) ->
+    false, !;
+    format("Would you like your beer to be ~w?~n", [Attribute]),
+    read(Answer),
+    (Answer = yes ->
+      assert(yes(Attribute)),
+      elimination(Attribute),
+      true,
+      !;
+    Answer = no ->
+      assert(no(Attribute)), false, !;
+    write("Please answer 'yes.' or 'no.'"), nl,
+    is(Attribute)))
   ).
 
 
+/* check if user is ready */
 ready :-
   write("Are you ready? "),
   read(X),
@@ -146,7 +155,19 @@ ready :-
   write("Please answer 'yes.' or 'no.'"), nl, ready).
 
 
-/* verify if answer is correct */
+/* main menu */
+guessBeer :-
+  write("I will now ask you questions to find out your favorite beer."), nl,
+  ( beer(X),
+    write("You should order the "), write(X), write("."), nl,
+    checkifRight
+  ) ;
+  ( write("Sorry, I could not find a beer matching those criteria."), nl,
+    write("My creator should have been a more experienced beer drinker!"), nl
+  ).
+
+
+/* prompt user to verify if answer was correct */
 checkifRight :-
 write("Did I guess correctly?"),
 read(yes) -> write("Told you I would!"), nl ;
@@ -154,4 +175,12 @@ read(yes) -> write("Told you I would!"), nl ;
              fail.
 
 
-end :- write("Type 'begin.' and press enter to have another go!").
+/* initialization */
+begin :- write("Welcome to the Beer Selector..."), nl,
+         write("an Expert System to pick the beer you need!"), nl,
+         retractall(yes(_)),
+         retractall(no(_)),
+         ready -> guessBeer,
+                  write("Type 'begin.' and press enter to have another go!").
+                  end;
+                  fail.
