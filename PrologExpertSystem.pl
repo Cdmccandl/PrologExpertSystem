@@ -3,10 +3,10 @@
 
 begin :- write("Welcome to the Beer Selector..."), nl,
          write("an Expert System to pick the beer you need!"), nl,
-         retractall(fact(_)), !,
-         introduction -> guessBeer,
-                         end ;
-                         fail.
+         retractall(fact(_)),
+         ready -> guessBeer,
+                  end;
+                  fail.
 
 
 /* gather facts from user input */
@@ -117,6 +117,7 @@ beer(belgianGold) :- is("light-colored"),
 
 
 guessBeer :-
+  write("I will now ask you questions to find out your favorite beer."), nl,
   ( beer(X),
     write("You should order the "),
     write(X), nl,
@@ -127,21 +128,21 @@ guessBeer :-
   ).
 
 
-/* introduction for user */
-introduction :-
-write("I will now ask you questions to find out your favorite beer."), nl,
-write("Please answer 'yes.' or 'no.'"), nl,
-write("Are you ready? "),
-read(yes) -> true;
-             write("Goodbye."), nl,
-             fail.
+ready :-
+  write("Are you ready? "),
+  read(X),
+  (X = yes ->
+    true, !;
+  X = no ->
+    write("Goodbye."), nl, fail, !;
+  write("Please answer 'yes.' or 'no.'"), nl, ready).
 
 
 /* verify if answer is correct */
 checkifRight :-
 write("Did I guess correctly?"),
-read(yes) -> write("Told you I would!") ;
-             write("I hope I can get it next time... "),
+read(yes) -> write("Told you I would!"), nl ;
+             write("I hope I can get it next time... "), nl,
              fail.
 
 
